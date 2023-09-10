@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class HeroissService {
+public class HeroisService {
     private final HeroisRepository repository;
 
 
@@ -59,5 +59,6 @@ public class HeroissService {
     @Transactional
     public void delete(Long id) {
         repository.deleteById(id);
+
     }
 }

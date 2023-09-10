@@ -1,4 +1,4 @@
-package br.com.gamerpg.model;
+package br.com.gamerpg.data.model;
 
 public enum TipoDados {
     D12("Dado 12 lados"),

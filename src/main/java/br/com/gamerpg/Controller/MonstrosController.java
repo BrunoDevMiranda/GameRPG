@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/Monstros")
+@RequestMapping("/monstros")
 public class MonstrosController {
 
     private final MonstroService service;
@@ -52,8 +52,5 @@ public class MonstrosController {
         }
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Long id) {
-     service.delete(id);
-    }
+
 }

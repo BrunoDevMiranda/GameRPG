@@ -1,4 +1,4 @@
-package br.com.gamerpg.model;
+package br.com.gamerpg.data.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,8 @@ import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
-@Entity(name = "tb_hero")
+@Entity
+@Table(name = "tb_hero")
 @Data
 @Builder
 @AllArgsConstructor

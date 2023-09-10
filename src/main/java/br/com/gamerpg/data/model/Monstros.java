@@ -1,4 +1,4 @@
-package br.com.gamerpg.model;
+package br.com.gamerpg.data.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
-@Entity(name = "tb_hero")
+
+@Entity
+@Table(name = "tb_monstro")
 @Data
 @Builder
 @AllArgsConstructor
@@ -18,7 +20,7 @@ public class Monstros {
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     @Column
-    private String classHero;
+    private String classMontro;
     @Column
     private int vida;
     @Column
