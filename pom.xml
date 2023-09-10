@@ -39,6 +39,17 @@
             <version>42.2.24</version> <!-- Versão mais recente do PostgreSQL JDBC Driver -->
         </dependency>
 
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId> <!-- ou outro provedor de armazenamento de sessão, como JDBC -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
+
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

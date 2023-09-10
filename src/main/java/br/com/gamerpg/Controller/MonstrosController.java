@@ -1,7 +1,7 @@
 package br.com.gamerpg.Controller;
 
 import br.com.gamerpg.data.model.Monstros;
-import br.com.gamerpg.data.service.MonstroService;
+import br.com.gamerpg.data.service.MonstrosService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +12,9 @@ import java.util.*;
 @RequestMapping("/monstros")
 public class MonstrosController {
 
-    private final MonstroService service;
+    private final MonstrosService service;
 
-    public MonstrosController(MonstroService service) {
+    public MonstrosController(MonstrosService service) {
         this.service = service;
     }
 

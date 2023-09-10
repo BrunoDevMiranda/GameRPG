@@ -8,11 +8,22 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
-public class MonstroService {
+public class MonstrosService {
     private final MonstrosRepository repository;
+
+    public Monstros escolherMonstroPorNome(String nome) {
+        Optional<Monstros> monstroOptional = repository.findByNome(nome);
+        return monstroOptional.orElse(null);
+    }
+    public Monstros encontrarMonstroPorNome(String nome) {
+        return repository.findByClassMontro(nome);
+    }
+
+
 
     @Transactional
     public Monstros findByID(Long id) {
@@ -56,7 +67,6 @@ public class MonstroService {
 
 
     }
-
 
 
 

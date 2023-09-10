@@ -1,6 +1,7 @@
 package br.com.gamerpg.data.service;
 
 import br.com.gamerpg.data.model.Herois;
+import br.com.gamerpg.data.model.Monstros;
 import br.com.gamerpg.data.repository.HeroisRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +14,17 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class HeroisService {
     private final HeroisRepository repository;
+
+    public Herois escolherHeroiPorNome(String nome) {
+        Optional<Herois> heroisOptional = repository.findByNome(nome);
+        return heroisOptional.orElse(null);
+    }
+    public Herois encontrarHeroiPorNome(String nome) {
+        return repository.findByClassHero(nome);
+    }
+
+
+
 
 
     @Transactional
@@ -61,4 +73,6 @@ public class HeroisService {
         repository.deleteById(id);
 
     }
+
+
 }
