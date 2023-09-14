@@ -9,6 +9,7 @@ import java.util.*;
 
 @Entity
 @Data
+@Table(name = "tb_resultado")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultadoBatalha {
@@ -18,7 +19,8 @@ public class ResultadoBatalha {
     private String vencedor;
     private String quemIniciou;
 
-    @OneToMany(mappedBy = "resultadoBatalha", cascade = CascadeType.ALL)
+    @Column
+    @OneToMany
     private List<HistoricoBatalha> historicoBatalhaList = new ArrayList<>();
 
 }

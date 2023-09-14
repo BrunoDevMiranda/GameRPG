@@ -16,7 +16,6 @@ public class PersonagemController {
 
     private final PersonagemService service;
 
-
     @GetMapping("/{id}")
     public ResponseEntity<Personagem> getHeroiById(@PathVariable("id") Long id) {
         Personagem personagem = service.findByID(id);

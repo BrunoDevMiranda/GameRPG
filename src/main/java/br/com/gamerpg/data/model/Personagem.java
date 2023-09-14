@@ -24,6 +24,7 @@ public class Personagem {
     private Long id;
     @Column
     private String classe;
+
     @Enumerated(EnumType.STRING)
     private TipoPersonagem tipo;
     @Column
@@ -37,17 +38,17 @@ public class Personagem {
     @Column
     private int quantidadeDados;
     @Enumerated(EnumType.STRING)
+
     private TipoDados tipoDados; // D12 , D8 , D6 ,D4
 
 
     public int rolarDado(int quantidadeRolagens) {
         Random random = new Random();
         int resultadoDados = 0; // Inicialize o resultado como 0
-//        System.out.println("Tipo de dado a ser jogado: " + tipoDados);
-
+        System.out.println("Tipo de dado a ser jogado: " + tipoDados);
         for (int i = 0; i < quantidadeRolagens; i++) {
             int valorRolagem = random.nextInt(getTipoDados().getValorDado()) + 1; // Rolagem individual
-//            System.out.println("Resultado do Dado " + (i + 1) + ": " + valorRolagem);
+            System.out.println("Resultado do Dado " + (i + 1) + ": " + valorRolagem);
             resultadoDados += valorRolagem; // Some o resultado de cada rolagem
         }
         out.println("Resultado da Soma das Rolagens: " + resultadoDados);
@@ -57,6 +58,14 @@ public class Personagem {
         Random random = new Random();
         int resultadoDados;
         resultadoDados = random.nextInt(D12.getValorDado() +1);
+        return resultadoDados;
+    }
+
+    public int rodarDado20(){
+        Random random = new Random();
+        int resultadoDados;
+        resultadoDados = random.nextInt(20 )+1;
+
         return resultadoDados;
     }
     public int getQuantidadeDados() {

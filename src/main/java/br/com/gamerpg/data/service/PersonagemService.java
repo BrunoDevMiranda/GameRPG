@@ -3,6 +3,7 @@ package br.com.gamerpg.data.service;
 import br.com.gamerpg.data.model.Personagem;
 import br.com.gamerpg.data.model.TipoPersonagem;
 import br.com.gamerpg.data.repository.PersonagemRepository;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import java.util.Random;
 @RequiredArgsConstructor
 public class PersonagemService {
     private final PersonagemRepository repository ;
+    private final HttpSession session;
 
     public Personagem escolherPorNomeETipo(String classe, String categoria) {
         Optional<Personagem> personagemOptional ;
@@ -52,7 +54,6 @@ public class PersonagemService {
         if (existingPersonagem.isPresent()) {
             Personagem updatedPersonagem = existingPersonagem.get();
 
-
             updatedPersonagem.setClasse(personagem.getClasse());
             updatedPersonagem.setQuantidadeDados(personagem.getQuantidadeDados());
             updatedPersonagem.setForca(personagem.getForca());
@@ -68,29 +69,33 @@ public class PersonagemService {
         }
     }
 
-
-
-
     @Transactional
     public void delete(Long id) {
         repository.deleteById(id);
-
     }
-
 
     public Personagem buscarAleatorio() {
         List<Personagem> personagems = repository.findAll();
-
         if (personagems.isEmpty()) {
             return null;
         }
-        // Gere um índice aleatório para selecionar um monstro aleatório
         Random random = new Random();
         int indiceAleatorio = random.nextInt(personagems.size());
-
-        // Retorne o monstro aleatório
         return personagems.get(indiceAleatorio);
     }
+
+    public Personagem personagemEscolhido() {
+        Personagem personagemEscolhido = (Personagem) session.getAttribute("personagemEscolhido");
+        if (personagemEscolhido == null) {
+            personagemEscolhido = buscarAleatorio();
+            session.setAttribute("personagemEscolhido", personagemEscolhido);
+        }
+        return personagemEscolhido;
+    }
+
+
+
+
 
 }
 

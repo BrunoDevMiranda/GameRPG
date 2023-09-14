@@ -1,22 +1,19 @@
 package br.com.gamerpg.data.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_historico_batalha")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class HistoricoBatalha {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "personagem_id")
-    private Personagem personagem;
-    @ManyToOne
-    @JoinColumn(name = "resultado_id")
-    private ResultadoBatalha resultadoBatalha;
 
     @Column(name = "vencedor_turno")
     private String vencedorTurno;
@@ -41,6 +38,7 @@ public class HistoricoBatalha {
 
     @Column(name = "dano_causado_oponente")
     private int danoCausadoOponente;
+
 
 }
 
